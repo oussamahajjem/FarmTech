@@ -2,63 +2,119 @@ import Foundation
 
 class NetworkService {
     static let shared = NetworkService()
-
-    // Base URL de votre API
-    private let baseURL = "http://172.20.10.3:3000/api"
-
-    // Fonction pour effectuer un appel POST
-    func postRequest(endpoint: String, body: [String: Any], completion: @escaping (Result<Data, Error>) -> Void) {
-        guard let url = URL(string: "\(baseURL)/\(endpoint)") else {
-            completion(.failure(NSError(domain: "Invalid URL", code: 400, userInfo: nil)))
-            return
-        }
-
+    
+    private let baseURL = "http://172.20.10.5:3000"
+    
+    private init() {}
+    
+    func login(email: String, password: String, completion: @escaping (Result<Data, Error>) -> Void) {
+        let url = URL(string: "\(baseURL)/auth/login")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-
-        do {
-            request.httpBody = try JSONSerialization.data(withJSONObject: body, options: [])
-        } catch {
-            completion(.failure(error))
-            return
-        }
-
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        let body: [String: Any] = ["email": email, "password": password]
+        request.httpBody = try? JSONSerialization.data(withJSONObject: body)
+        
         URLSession.shared.dataTask(with: request) { data, response, error in
             if let error = error {
                 completion(.failure(error))
                 return
             }
-
-            guard let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) else {
-                completion(.failure(NSError(domain: "Invalid Response", code: 500, userInfo: nil)))
-                return
-            }
-
+            
             guard let data = data else {
-                completion(.failure(NSError(domain: "No Data", code: 404, userInfo: nil)))
+                completion(.failure(NSError(domain: "NetworkService", code: 0, userInfo: [NSLocalizedDescriptionKey: "No data received"])))
                 return
             }
-
+            
             completion(.success(data))
         }.resume()
     }
-
-    // Fonction Login
-    func login(email: String, password: String, completion: @escaping (Result<Data, Error>) -> Void) {
-        let body: [String: Any] = ["email": email, "password": password]
-        postRequest(endpoint: "auth/login", body: body, completion: completion)
-    }
-
-    // Fonction Signup
+    
     func signup(name: String, email: String, password: String, completion: @escaping (Result<Data, Error>) -> Void) {
+        let url = URL(string: "\(baseURL)/auth/signup")!
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
         let body: [String: Any] = ["name": name, "email": email, "password": password]
-        postRequest(endpoint: "auth/signup", body: body, completion: completion)
+        request.httpBody = try? JSONSerialization.data(withJSONObject: body)
+        
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                completion(.failure(error))
+                return
+            }
+            
+            if let httpResponse = response as? HTTPURLResponse {
+                if httpResponse.statusCode == 201 {
+                    completion(.success(Data()))
+                } else {
+                    let error = NSError(domain: "NetworkService", code: httpResponse.statusCode, userInfo: [NSLocalizedDescriptionKey: "Signup failed with status code: \(httpResponse.statusCode)"])
+                    completion(.failure(error))
+                }
+            } else {
+                let error = NSError(domain: "NetworkService", code: 0, userInfo: [NSLocalizedDescriptionKey: "Invalid response"])
+                completion(.failure(error))
+            }
+        }.resume()
     }
-
-    // Fonction Forget Password
-    func forgetPassword(email: String, completion: @escaping (Result<Data, Error>) -> Void) {
-        let body: [String: Any] = ["email": email]
-        postRequest(endpoint: "auth/forget-password", body: body, completion: completion)
-    }
+    func forgotPassword(email: String, completion: @escaping (Result<String, Error>) -> Void) {
+            let url = URL(string: "\(baseURL)/auth/forgot-password")!
+            var request = URLRequest(url: url)
+            request.httpMethod = "POST"
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            
+            let body: [String: Any] = ["email": email]
+            request.httpBody = try? JSONSerialization.data(withJSONObject: body)
+            
+            URLSession.shared.dataTask(with: request) { data, response, error in
+                if let error = error {
+                    completion(.failure(error))
+                    return
+                }
+                
+                guard let data = data else {
+                    completion(.failure(NSError(domain: "NetworkService", code: 0, userInfo: [NSLocalizedDescriptionKey: "No data received"])))
+                    return
+                }
+                
+                do {
+                    if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
+                       let message = json["message"] as? String {
+                        completion(.success(message))
+                    } else {
+                        completion(.failure(NSError(domain: "NetworkService", code: 0, userInfo: [NSLocalizedDescriptionKey: "Invalid response format"])))
+                    }
+                } catch {
+                    completion(.failure(error))
+                }
+            }.resume()
+        }
+    func getWeather(latitude: Double, longitude: Double, completion: @escaping (Result<WeatherDto, Error>) -> Void) {
+            let url = URL(string: "\(baseURL)/azure-maps/weather?lat=\(latitude)&lng=\(longitude)")!
+            
+            URLSession.shared.dataTask(with: url) { data, response, error in
+                if let error = error {
+                    completion(.failure(error))
+                    return
+                }
+                
+                guard let data = data else {
+                    completion(.failure(NSError(domain: "NetworkService", code: 0, userInfo: [NSLocalizedDescriptionKey: "No data received"])))
+                    return
+                }
+                
+                do {
+                    let decoder = JSONDecoder()
+                    decoder.keyDecodingStrategy = .convertFromSnakeCase
+                    let weatherData = try decoder.decode(WeatherDto.self, from: data)
+                    completion(.success(weatherData))
+                } catch {
+                    print("Decoding error: \(error)")
+                    completion(.failure(error))
+                }
+            }.resume()
+        }
 }
+

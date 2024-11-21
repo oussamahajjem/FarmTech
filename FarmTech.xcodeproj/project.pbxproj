@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		583BC9532CEFCA8100BAA4C5 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583BC9522CEFCA8100BAA4C5 /* AuthService.swift */; };
+		583BC9552CEFF11500BAA4C5 /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583BC9542CEFF11500BAA4C5 /* ForgotPasswordView.swift */; };
+		583BC9572CEFF51B00BAA4C5 /* Feature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583BC9562CEFF51B00BAA4C5 /* Feature.swift */; };
+		583BC9592CEFF54400BAA4C5 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583BC9582CEFF54400BAA4C5 /* HomeView.swift */; };
+		583BC95B2CEFF59B00BAA4C5 /* WeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583BC95A2CEFF59B00BAA4C5 /* WeatherView.swift */; };
+		583BC95D2CEFF75D00BAA4C5 /* WeatherModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583BC95C2CEFF75D00BAA4C5 /* WeatherModels.swift */; };
+		583BC95F2CEFF91800BAA4C5 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583BC95E2CEFF91800BAA4C5 /* Theme.swift */; };
 		585EE9492CEBF76F005A8FE2 /* FarmTechApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585EE9482CEBF76F005A8FE2 /* FarmTechApp.swift */; };
 		585EE94B2CEBF76F005A8FE2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585EE94A2CEBF76F005A8FE2 /* ContentView.swift */; };
 		585EE94D2CEBF770005A8FE2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 585EE94C2CEBF770005A8FE2 /* Assets.xcassets */; };
@@ -16,10 +23,17 @@
 		585EE95C2CEBFCC5005A8FE2 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585EE95B2CEBFCC5005A8FE2 /* WelcomeView.swift */; };
 		585EE95E2CEBFCE0005A8FE2 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585EE95D2CEBFCE0005A8FE2 /* SignUpView.swift */; };
 		585EE9602CEBFCF0005A8FE2 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585EE95F2CEBFCF0005A8FE2 /* SignInView.swift */; };
-		585EE9622CEC0A9C005A8FE2 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585EE9612CEC0A9C005A8FE2 /* NetworkService.swift */; };
+		586C53FE2CEFC62E00E38D97 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586C53FD2CEFC62E00E38D97 /* NetworkService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		583BC9522CEFCA8100BAA4C5 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		583BC9542CEFF11500BAA4C5 /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
+		583BC9562CEFF51B00BAA4C5 /* Feature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feature.swift; sourceTree = "<group>"; };
+		583BC9582CEFF54400BAA4C5 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		583BC95A2CEFF59B00BAA4C5 /* WeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherView.swift; sourceTree = "<group>"; };
+		583BC95C2CEFF75D00BAA4C5 /* WeatherModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherModels.swift; sourceTree = "<group>"; };
+		583BC95E2CEFF91800BAA4C5 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		585EE9452CEBF76F005A8FE2 /* FarmTech.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FarmTech.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		585EE9482CEBF76F005A8FE2 /* FarmTechApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FarmTechApp.swift; sourceTree = "<group>"; };
 		585EE94A2CEBF76F005A8FE2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -30,7 +44,7 @@
 		585EE95B2CEBFCC5005A8FE2 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		585EE95D2CEBFCE0005A8FE2 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		585EE95F2CEBFCF0005A8FE2 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
-		585EE9612CEC0A9C005A8FE2 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		586C53FD2CEFC62E00E38D97 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,7 +78,6 @@
 			isa = PBXGroup;
 			children = (
 				585EE9482CEBF76F005A8FE2 /* FarmTechApp.swift */,
-				585EE9612CEC0A9C005A8FE2 /* NetworkService.swift */,
 				585EE94A2CEBF76F005A8FE2 /* ContentView.swift */,
 				585EE94C2CEBF770005A8FE2 /* Assets.xcassets */,
 				585EE9512CEBF770005A8FE2 /* Persistence.swift */,
@@ -73,6 +86,14 @@
 				585EE95B2CEBFCC5005A8FE2 /* WelcomeView.swift */,
 				585EE95D2CEBFCE0005A8FE2 /* SignUpView.swift */,
 				585EE95F2CEBFCF0005A8FE2 /* SignInView.swift */,
+				586C53FD2CEFC62E00E38D97 /* NetworkService.swift */,
+				583BC9522CEFCA8100BAA4C5 /* AuthService.swift */,
+				583BC9542CEFF11500BAA4C5 /* ForgotPasswordView.swift */,
+				583BC9562CEFF51B00BAA4C5 /* Feature.swift */,
+				583BC9582CEFF54400BAA4C5 /* HomeView.swift */,
+				583BC95A2CEFF59B00BAA4C5 /* WeatherView.swift */,
+				583BC95C2CEFF75D00BAA4C5 /* WeatherModels.swift */,
+				583BC95E2CEFF91800BAA4C5 /* Theme.swift */,
 			);
 			path = FarmTech;
 			sourceTree = "<group>";
@@ -157,11 +178,18 @@
 			files = (
 				585EE95C2CEBFCC5005A8FE2 /* WelcomeView.swift in Sources */,
 				585EE9602CEBFCF0005A8FE2 /* SignInView.swift in Sources */,
-				585EE9622CEC0A9C005A8FE2 /* NetworkService.swift in Sources */,
+				586C53FE2CEFC62E00E38D97 /* NetworkService.swift in Sources */,
+				583BC9532CEFCA8100BAA4C5 /* AuthService.swift in Sources */,
 				585EE9522CEBF770005A8FE2 /* Persistence.swift in Sources */,
+				583BC95B2CEFF59B00BAA4C5 /* WeatherView.swift in Sources */,
+				583BC9572CEFF51B00BAA4C5 /* Feature.swift in Sources */,
 				585EE94B2CEBF76F005A8FE2 /* ContentView.swift in Sources */,
+				583BC95D2CEFF75D00BAA4C5 /* WeatherModels.swift in Sources */,
 				585EE9492CEBF76F005A8FE2 /* FarmTechApp.swift in Sources */,
 				585EE95E2CEBFCE0005A8FE2 /* SignUpView.swift in Sources */,
+				583BC9592CEFF54400BAA4C5 /* HomeView.swift in Sources */,
+				583BC95F2CEFF91800BAA4C5 /* Theme.swift in Sources */,
+				583BC9552CEFF11500BAA4C5 /* ForgotPasswordView.swift in Sources */,
 				585EE9552CEBF770005A8FE2 /* FarmTech.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -298,6 +326,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"FarmTech/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FarmTech/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -326,6 +355,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"FarmTech/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FarmTech/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
